@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>Webservice listing</title>
+    </h:head>
+
+    <h:outputStylesheet library="css" name="style.css"  />
+    <h:body>
+
+
+<h:form>
+
+<h:dataTable id="myDataTable" value="#{pages.emplist}"  var="iterator"  first="#{pages.currentPage}" rows ="#{pages.rowCount}"  styleClass="employeeTable"
+   headerClass="employeeTableHeader" rowClasses="employeeTableOddRow,employeeTableEvenRow"  >
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="ID"/>
+            </f:facet>
+            <h:outputText value="#{iterator.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Name"/>
+            </f:facet>
+            <h:outputText value="#{iterator.name}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Age"/>
+            </f:facet>
+            <h:outputText value="#{iterator.age}"/>
+        </h:column>
+		<h:column>
+            <f:facet name="header">
+                <h:outputText value="Organization"/>
+            </f:facet>
+            <h:outputText value="#{iterator.organization}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Exp"/>
+            </f:facet>
+            <h:outputText value="#{iterator.experience}"/>
+        </h:column>
+         <h:column>
+            <f:facet name="header">
+                <h:outputText value="Skill"/>
+            </f:facet>
+            <h:outputText value="#{iterator.skill}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">
+                <h:outputText value="City"/>
+            </f:facet>
+          <h:outputText value="#{iterator.address[0].city}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">
+                <h:outputText value="Pin"/>
+            </f:facet>
+          <h:outputText value="#{iterator.address[0].pin}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">
+                <h:outputText value="State"/>
+            </f:facet>
+          <h:outputText value="#{iterator.address[0].state}"/>
+        </h:column>
+        <h:column >
+            <f:facet name="header">
+                <h:outputText value="Country"/>
+            </f:facet>
+          <h:outputText value="#{iterator.address[0].country}"/>
+        </h:column>
+    </h:dataTable>
+
+Pages :
+
+<h:commandLink  value="1">
+	<f:param name="currentPage" value="1" />
+	<f:ajax event="click" listener="#{pages.setpage}" render="myDataTable"  />
+</h:commandLink>
+
+-
+
+<h:commandLink  value="2">
+	<f:param name="currentPage" value="2" />
+	<f:ajax event="click" listener="#{pages.setpage}" render="myDataTable"  />
+</h:commandLink>
+-
+<h:commandLink  value="3">
+	<f:param name="currentPage" value="3" />
+	<f:ajax event="click" listener="#{pages.setpage}" render="myDataTable"  />
+</h:commandLink>
+
+
+</h:form>
+    </h:body>
+
+</html>
